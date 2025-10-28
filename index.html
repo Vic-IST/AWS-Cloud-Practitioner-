@@ -34,7 +34,9 @@
 
     function showQuestion() {
       const q = questions[idx];
-      answers[idx] = answers[idx] || null;     // preserve answer or null
+      if (answers[idx] === undefined) {
+        answers[idx] = null;                   // preserve answer or null
+      }
       qText.textContent = q.q;
       qChoices.innerHTML  = '';
       qExplain.textContent = '';
@@ -47,7 +49,6 @@
         input.name = 'ans';
         input.value = i;
         input.checked = (answers[idx] === i);
-        input.disabled = (answers[idx] !== null);
 
         input.addEventListener('change', () => {
           answers[idx] = i;
@@ -61,19 +62,35 @@
 
       prevBtn.disabled = (idx === 0);
       nextBtn.disabled = (idx === questions.length - 1);
+
+      if (answers[idx] !== null) {
+        showExplanation();
+      }
     }
 
     function showExplanation() {
       const q    = questions[idx];
       const ans  = answers[idx];
       if (ans === null) return;
-      if (ans === q.answer) {
-        qExplain.textContent = 'Correct. ' + q.explain;
-        qExplain.classList.add('correct');
+
+      const isCorrect = ans === q.answer;
+      const distractorExplain = q.why_others_are_not_correct ? q.why_others_are_not_correct[ans] : '';
+      const baseExplain = q.explain || '';
+
+      let message = '';
+      if (isCorrect) {
+        message = baseExplain ? 'Correct. ' + baseExplain : 'Correct!';
+      } else if (distractorExplain) {
+        message = 'Not quite. ' + distractorExplain;
+      } else if (baseExplain) {
+        message = 'Not quite. ' + baseExplain;
       } else {
-        qExplain.textContent = 'NOPE!!! ' + q.explain;
-        qExplain.classList.add('wrong');
+        message = 'Not quite.';
       }
+
+      qExplain.textContent = message;
+      qExplain.classList.toggle('correct', isCorrect);
+      qExplain.classList.toggle('wrong', !isCorrect);
     }
 
     prevBtn.addEventListener('click', () => {
