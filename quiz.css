@@ -1,0 +1,132 @@
+/* quiz.css */
+body {
+  font-family: sans-serif;
+  background-color: #0c1c44;
+  color: #f2b330;
+  min-height: 100vh;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+  gap: 20px;
+}
+
+.quiz-card {
+  width: 100%;
+  max-width: 640px;
+  background-color: #102254;
+  border-radius: 16px;
+  border: 3px solid rgba(242, 179, 48, 0.55);
+  box-shadow: 0 0 36px rgba(242, 179, 48, 0.22),
+              0 0 18px rgba(242, 179, 48, 0.16),
+              0 0 8px rgba(242, 179, 48, 0.12);
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.container {
+  max-width: 600px;
+  margin: 0 auto;       /* center horizontally and give some vertical space */
+  padding: 20px;
+  background-color: #453ac5;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  padding: 20px;
+  text-align: center;       /* centers text inside container */
+}
+
+.header {
+  margin-bottom: 20px;
+}
+
+.progress {
+  height: 5px;
+  background: #eee;
+  margin-bottom: 20px;
+}
+
+.bar {
+  height: 100%;
+  width: 0%;
+  background: #4caf50;
+  transition: width .3s;
+}
+
+.card {
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+
+.choices label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 6px auto;
+  cursor: pointer;
+  text-align: left;
+  max-width: 500px;
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 12px;
+  background-color: rgba(12, 28, 68, 0.55);
+  border: 1px solid rgba(242, 179, 48, 0.35);
+  transition: border-color 0.2s ease, background-color 0.2s ease, transform 0.2s ease;
+}
+
+.choices label:hover {
+  border-color: rgba(242, 179, 48, 0.6);
+  background-color: rgba(16, 46, 110, 0.65);
+  transform: translateY(-2px);
+}
+
+.choices input[type="radio"]{
+  margin-right: 8px;
+}
+
+.controls {
+  display: flex;
+  justify-content: center;    /* center buttons */
+  gap: 10px;
+  margin: 0;
+}
+
+.controls button {
+  padding: 8px 12px;
+}
+
+.hidden {
+  display: none;
+}
+
+#quizContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  text-align: left;
+}
+
+.question {
+  font-weight: 700;
+  font-size: 1.1rem;
+  padding-bottom: 12px;
+  border-bottom: 2px solid rgba(242, 179, 48, 0.35);
+}
+
+.explanation {
+  margin-top: 4px;
+  font-style: italic;
+}
+
+.explanation.correct {
+  color: #2ecc71;
+}
+
+.explanation.wrong {
+  color: #4db6ac;
+}
