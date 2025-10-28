@@ -1,6 +1,6 @@
 const questions = [
   {
-    q: "1. Which of the following best describes the value proposition of the AWS Cloud?",
+    q: "Which of the following best describes the value proposition of the AWS Cloud?",
     choices: [
       "Fixed hardware and software costs",
       "Reduced flexibility and scalability",
@@ -8,15 +8,15 @@ const questions = [
       "Increased time for deployment"
     ],
     answer: 2,
-    explanations: {
-      0: "Incorrect. ‘Fixed hardware and software costs’ implies you’re locked into capital expenditure and cannot scale up or down — which is the opposite of AWS’s pay-as-you-go model.",
-      1: "Incorrect. ‘Reduced flexibility and scalability’ is contrary to one of the key benefits of AWS, which is increased flexibility and scalability.",
-      2: "Correct. AWS’s value proposition strongly emphasises replacing large upfront capital cost with variable, usage-based pricing: pay only for what you use.",
-      3: "Incorrect. AWS enables faster deployment of resources, so ‘increased time for deployment’ is wrong — time to deploy actually decreases."
+    explain: "AWS replaces large upfront capital expense with variable, usage-based pricing. You pay only for what you actually consume instead of pre-buying hardware.",
+    why_others_are_not_correct: {
+      0: "Fixed hardware/software costs describe traditional on-prem buying, not cloud consumption.",
+      1: "AWS increases flexibility and scalability — you can scale up/down quickly — so 'reduced flexibility' is the opposite of a benefit.",
+      3: "AWS speeds up deployment. You can launch resources in minutes, so it does not increase deployment time."
     }
   },
   {
-    q: "2. Which deployment model describes a company running some workloads on-premises and some in the cloud?",
+    q: "Which deployment model describes a company running some workloads on-premises and some in the cloud?",
     choices: [
       "Public cloud",
       "Private cloud",
@@ -24,31 +24,31 @@ const questions = [
       "Community cloud"
     ],
     answer: 2,
-    explanations: {
-      0: "Incorrect. ‘Public cloud’ refers entirely to infrastructure provided by a cloud vendor, not combined with on-premises workloads.",
-      1: "Incorrect. ‘Private cloud’ refers to a cloud deployment solely for one organization (often on-premises or dedicated), not a mixed model.",
-      2: "Correct. ‘Hybrid cloud’ is the model where some workloads run in the customer’s on-premises data center and some in the cloud, and they work together.",
-      3: "Incorrect. ‘Community cloud’ refers to shared infrastructure for a community of organisations with shared concerns (regulation, security), not specifically on-prem plus cloud mix."
+    explain: "Hybrid cloud means part of the workload is in your own data center and part is in a public cloud, working together.",
+    why_others_are_not_correct: {
+      0: "Public cloud means everything is running on infrastructure owned by the provider, not split with on-prem.",
+      1: "Private cloud is dedicated to one organization, often on-prem or in a dedicated facility — not mixed with public cloud.",
+      3: "Community cloud is shared by organizations with similar requirements (like government or healthcare), not specifically a split of on-prem and public cloud."
     }
   },
   {
-    q: "3. What is the shared responsibility model in AWS and which part remains with the customer?",
+    q: "What is the shared responsibility model in AWS and which part remains with the customer?",
     choices: [
       "AWS is responsible for everything, including customer data",
       "The customer is responsible for physical security of AWS data centers",
-      "AWS is responsible “of” the cloud infrastructure; the customer is responsible “in” the cloud",
+      "AWS is responsible for security OF the cloud infrastructure; the customer is responsible for security IN the cloud",
       "Customers only pay when AWS infrastructure fails"
     ],
     answer: 2,
-    explanations: {
-      0: "Incorrect. AWS is *not* responsible for everything — customers retain responsibility for their data, configurations, access management etc.",
-      1: "Incorrect. Physical security of AWS data centres is AWS’s responsibility, not the customer’s.",
-      2: "Correct. The accepted phrasing: AWS manages security *of* the cloud (infrastructure, hardware, facilities) and the customer manages security *in* the cloud (data, applications, access).",
-      3: "Incorrect. Payment terms aren’t the focus of the shared responsibility model — it’s about who is responsible for what in the cloud environment."
+    explain: "AWS secures the underlying cloud (facilities, hardware, core services). You secure what you put in it (data, IAM, configs, patching your OS/apps).",
+    why_others_are_not_correct: {
+      0: "AWS is not responsible for your data, IAM decisions, or app configuration. You are.",
+      1: "Physical security of AWS data centers is handled by AWS, not customers.",
+      3: "Billing has nothing to do with the shared responsibility model. The model is about dividing security duties."
     }
   },
   {
-    q: "4. Which of the following AWS services is object storage and is appropriate for storing unstructured data and “store at scale” use cases?",
+    q: "Which of the following AWS services is object storage and is appropriate for storing unstructured data at scale?",
     choices: [
       "Amazon EBS",
       "Amazon S3",
@@ -56,15 +56,15 @@ const questions = [
       "Amazon RDS"
     ],
     answer: 1,
-    explanations: {
-      0: "Incorrect. Amazon EBS is block‐level storage (like a virtual disk attached to an EC2 instance), not object storage for massive scale of unstructured data.",
-      1: "Correct. Amazon S3 (Simple Storage Service) is AWS’s object storage service built for storing and retrieving any amount of data, unstructured, with high durability.",
-      2: "Incorrect. Amazon EFS is a managed file system (file storage) for multiple instances, not object storage optimized for massive unstructured data.",
-      3: "Incorrect. Amazon RDS is a managed relational database service, not an object storage service."
+    explain: "Amazon S3 is AWS’s object storage service, built for virtually unlimited unstructured data with very high durability.",
+    why_others_are_not_correct: {
+      0: "Amazon EBS is block storage (like a disk for an EC2 instance), not large-scale object storage.",
+      2: "Amazon EFS is managed shared file storage, not object storage.",
+      3: "Amazon RDS is a managed relational database service, not object storage."
     }
   },
   {
-    q: "5. What is the primary benefit of using multiple Availability Zones (AZs) in your architecture?",
+    q: "What is the primary benefit of using multiple Availability Zones (AZs) in your architecture?",
     choices: [
       "Lower latency within a single region",
       "Reduced AWS service costs",
@@ -72,15 +72,15 @@ const questions = [
       "Eliminates the need for backups"
     ],
     answer: 2,
-    explanations: {
-      0: "Incorrect. While using multiple AZs might help latency for some users, the primary benefit is about availability/resilience, not latency.",
-      1: "Incorrect. Using multiple AZs doesn’t inherently reduce costs — it often increases complexity and may increase cost, but improves resilience.",
-      2: "Correct. By deploying across multiple AZs, you protect against the failure of a single AZ, so you gain fault tolerance and higher availability.",
-      3: "Incorrect. Using multiple AZs helps resilience but does *not* eliminate the need for backups — backups are still required for data durability and disaster recovery."
+    explain: "Spreading resources across multiple AZs protects you if one AZ goes down. That boosts resilience and uptime.",
+    why_others_are_not_correct: {
+      0: "Latency may improve sometimes, but high availability is the main reason you design across AZs.",
+      1: "Multi-AZ usually increases reliability, not necessarily lowers cost.",
+      3: "High availability is not the same as backup. You still need backups for disaster recovery and data integrity."
     }
   },
   {
-    q: "6. Which of the following is *not* one of the six advantages of the AWS Cloud (as commonly listed)?",
+    q: "Which of the following is NOT one of the six commonly cited advantages of the AWS Cloud?",
     choices: [
       "Trade capital expense for variable expense",
       "Benefit from massive economies of scale",
@@ -88,15 +88,15 @@ const questions = [
       "Manual infrastructure provisioning"
     ],
     answer: 3,
-    explanations: {
-      0: "Incorrect. ‘Trade capital expense for variable expense’ *is* one of the six advantages of cloud computing.  [oai_citation:0‡AWS Documentation](https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html?utm_source=chatgpt.com)",
-      1: "Incorrect. ‘Benefit from massive economies of scale’ is also one of the six advantages.  [oai_citation:1‡AWS Documentation](https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html?utm_source=chatgpt.com)",
-      2: "Incorrect. ‘Stop guessing capacity’ is in the list of advantages.  [oai_citation:2‡AWS Documentation](https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html?utm_source=chatgpt.com)",
-      3: "Correct. ‘Manual infrastructure provisioning’ is *not* an advantage — actually, the cloud emphasizes automation, agility, and speed rather than manual provisioning."
+    explain: "‘Manual infrastructure provisioning’ is the opposite of what AWS promotes. Cloud computing emphasizes automation, agility, and rapid provisioning.",
+    why_others_are_not_correct: {
+      0: "Shifting from CapEx to OpEx is a core cloud advantage.",
+      1: "Using AWS’s scale drives lower cost per unit of compute/storage.",
+      2: "You don’t have to guess and overbuy capacity up front; you scale on demand. That’s a listed benefit."
     }
   },
   {
-    q: "7. If a small startup is comfortable with community support and only needs basic coverage, which AWS Support plan might be most appropriate?",
+    q: "If a small startup is comfortable with community support and only needs basic coverage, which AWS Support plan is most appropriate?",
     choices: [
       "Enterprise",
       "Business",
@@ -104,15 +104,15 @@ const questions = [
       "Basic"
     ],
     answer: 3,
-    explanations: {
-      0: "Incorrect. The Enterprise support plan is the highest tier, intended for mission-critical workloads, large enterprises and includes a Technical Account Manager (TAM).",
-      1: "Incorrect. The Business support plan includes 24/7 technical support and more features than “basic coverage.”",
-      2: "Incorrect. The Developer support plan is a paid tier offering more than just community support; it’s a step up from Basic.",
-      3: "Correct. The Basic support plan is the most minimal AWS support tier (includes account/billing support and forums) and thus is appropriate for a small startup comfortable with minimal support."
+    explain: "The Basic support plan includes account/billing support and access to documentation and forums. It’s fine for very small/low-risk use cases.",
+    why_others_are_not_correct: {
+      0: "Enterprise is the highest tier, meant for mission-critical workloads and includes a Technical Account Manager.",
+      1: "Business support includes 24/7 access to engineers and faster response times — more than 'basic coverage.'",
+      2: "Developer support is paid and provides technical guidance beyond just community/forum-level help."
     }
   },
   {
-    q: "8. Which of these best describes the pay‐as‐you‐go pricing model in AWS?",
+    q: "Which of these best describes the pay-as-you-go pricing model in AWS?",
     choices: [
       "You pay a fixed monthly fee regardless of usage",
       "You pay only for the resources you consume, with no long-term commitments by default",
@@ -120,47 +120,47 @@ const questions = [
       "You pay up front for all resources regardless of usage"
     ],
     answer: 1,
-    explanations: {
-      0: "Incorrect. A fixed monthly fee regardless of usage is a subscription model or legacy hosting model, not AWS’s standard pay-as-you-go.",
-      1: "Correct. The pay-as-you-go model means you pay for what you consume and there’s typically no long‐term commitment by default (although you can choose reserved capacity for savings).",
-      2: "Incorrect. Committing to a 3-year term is optional (as in Reserved Instances), but not a required part of the core pay-as-you-go model.",
-      3: "Incorrect. Paying up front for all resources regardless of usage is opposite of the pay-as-you-go concept."
+    explain: "In AWS, you generally pay for what you actually use. No need to pre-purchase large capacity unless you want reserved discounts.",
+    why_others_are_not_correct: {
+      0: "A flat fee regardless of usage is more like old-school hosting, not cloud consumption billing.",
+      2: "Multi-year commitments (like Reserved Instances or Savings Plans) are optional discounts, not required.",
+      3: "Prepaying everything up front is the opposite of on-demand pricing."
     }
   },
   {
-    q: "9. Which of the following best describes a public subnet in a VPC?",
+    q: "Which of the following best describes a public subnet in a VPC?",
     choices: [
       "A subnet that has no route to an Internet Gateway",
-      "A subnet that has a route to an Internet Gateway and instances can directly reach the internet (if security allows)",
+      "A subnet that has a route to an Internet Gateway and whose instances can reach the internet (if security allows)",
       "A subnet that is automatically encrypted at rest",
       "A subnet that is only accessible via VPN from on-premises"
     ],
     answer: 1,
-    explanations: {
-      0: "Incorrect. A subnet with *no* route to an Internet Gateway would be a private subnet, not a public one.",
-      1: "Correct. A public subnet in a VPC is defined by the fact that it has a route out to an Internet Gateway; thus instances within can reach the internet (assuming security groups/NACLs permit).",
-      2: "Incorrect. Automatic encryption at rest is not the differentiator for a subnet being public vs private.",
-      3: "Incorrect. A subnet only accessible via VPN from on-premises is more like a private or dedicated access subnet, not a public subnet."
+    explain: "A subnet is considered public if its route table points to an Internet Gateway, allowing instances to have direct internet access (with proper security).",
+    why_others_are_not_correct: {
+      0: "No route to an Internet Gateway = private subnet, not public.",
+      2: "Encryption isn’t what defines public vs private.",
+      3: "VPN-only access sounds like a private subnet with site-to-site connectivity."
     }
   },
   {
-    q: "10. When should you choose a managed database service such as Amazon RDS instead of running your database on an EC2 instance?",
+    q: "When should you choose a managed database service such as Amazon RDS instead of running your database on an EC2 instance?",
     choices: [
       "When you want full control over the OS and database engine updates",
-      "When you want AWS to handle tasks such as backups, patching, monitoring and scaling",
+      "When you want AWS to handle tasks such as backups, patching, monitoring, and scaling",
       "When your database is so custom that no managed service can support it",
       "When cost is the only factor and you don’t care about reliability"
     ],
     answer: 1,
-    explanations: {
-      0: "Incorrect. If you want full control over OS and engine updates, you may choose self-managed on EC2 rather than a managed RDS service.",
-      1: "Correct. A managed database service like Amazon RDS is chosen when you want AWS to handle operational tasks (patching, backups, scaling, monitoring) so you can focus on your application.",
-      2: "Incorrect. If your database is extremely custom that no managed service supports it, you might choose EC2; that’s not a reason to choose a managed service.",
-      3: "Incorrect. Choosing solely based on cost and ignoring reliability is not a sound reason and is not the primary benefit of a managed service."
+    explain: "RDS handles undifferentiated heavy lifting: backups, patching, monitoring, scaling. You focus on using the database, not babysitting it.",
+    why_others_are_not_correct: {
+      0: "If you demand full low-level control, you usually self-host on EC2, not RDS.",
+      2: "Extremely custom databases are actually a reason to avoid RDS, not choose it.",
+      3: "Cost-only thinking ignores the managed reliability and ops value that RDS provides."
     }
   },
   {
-    q: "11. Which AWS service allows you to run code without provisioning or managing servers?",
+    q: "Which AWS service allows you to run code without provisioning or managing servers?",
     choices: [
       "Amazon EC2",
       "AWS Lambda",
@@ -168,15 +168,15 @@ const questions = [
       "AWS Elastic Beanstalk"
     ],
     answer: 1,
-    explanations: {
-      0: "Incorrect. Amazon EC2 is virtual servers where you must manage the OS, patches, etc.",
-      1: "Correct. AWS Lambda is the serverless compute service: you provide code (or container image) and AWS runs it without you managing servers.",
-      2: "Incorrect. Amazon ECS is container orchestration; you still manage container definitions and underlying infrastructure (unless using Fargate), so it’s not the pure serverless code-only model.",
-      3: "Incorrect. Elastic Beanstalk simplifies deployment of applications, but beneath it you still are managing infrastructure (or at least aware of it) rather than purely serverless code."
+    explain: "AWS Lambda is serverless: you provide code, and AWS runs it on demand without you managing servers.",
+    why_others_are_not_correct: {
+      0: "EC2 is virtual machines you manage yourself.",
+      2: "ECS is container orchestration; unless you pair it with Fargate, you manage infrastructure.",
+      3: "Elastic Beanstalk automates provisioning for apps, but you’re still aware of servers/instances underneath."
     }
   },
   {
-    q: "12. What is Amazon CloudFront used for?",
+    q: "What is Amazon CloudFront used for?",
     choices: [
       "Running virtual machines",
       "Distributing content globally with low latency",
@@ -184,15 +184,15 @@ const questions = [
       "Storing data in object format"
     ],
     answer: 1,
-    explanations: {
-      0: "Incorrect. Running virtual machines is the job of EC2, not CloudFront.",
-      1: "Correct. Amazon CloudFront is a global content delivery network (CDN) that distributes (caches) content at edge locations worldwide to reduce latency for end-users.",
-      2: "Incorrect. Managing security groups is part of VPC/EC2 networking/security, not CloudFront’s purpose.",
-      3: "Incorrect. Storing data in object format is Amazon S3’s job; CloudFront is distribution, not primary storage."
+    explain: "CloudFront is AWS’s global CDN. It caches and serves content from edge locations to reduce latency for users around the world.",
+    why_others_are_not_correct: {
+      0: "Running virtual machines is what EC2 is for.",
+      2: "Security groups are managed in VPC/EC2, not CloudFront.",
+      3: "Object storage is handled by S3; CloudFront sits in front to accelerate delivery."
     }
   },
   {
-    q: "13. Which AWS service provides block‐level storage volumes for use with EC2 instances?",
+    q: "Which AWS service provides block-level storage volumes for use with EC2 instances?",
     choices: [
       "Amazon S3",
       "Amazon EBS",
@@ -200,15 +200,15 @@ const questions = [
       "AWS Storage Gateway"
     ],
     answer: 1,
-    explanations: {
-      0: "Incorrect. Amazon S3 is object storage, not block storage for EC2 instances.",
-      1: "Correct. Amazon EBS (Elastic Block Store) supplies persistent block storage volumes that you attach to EC2 instances and treat much like a hard drive.",
-      2: "Incorrect. Amazon EFS is a file storage system (NFS) for shared file access, not block-level storage for individual instances.",
-      3: "Incorrect. AWS Storage Gateway bridges on-prem storage and AWS, not primary block storage for EC2 in the way EBS does."
+    explain: "Amazon EBS provides persistent block storage volumes that act like virtual hard drives for EC2 instances.",
+    why_others_are_not_correct: {
+      0: "S3 is object storage, not block storage.",
+      2: "EFS is managed shared file storage (NFS-style), not block storage.",
+      3: "Storage Gateway is a hybrid storage bridge for on-prem, not native EC2 block volumes."
     }
   },
   {
-    q: "14. What does Amazon Route 53 primarily provide?",
+    q: "What does Amazon Route 53 primarily provide?",
     choices: [
       "Domain name system (DNS) and domain registration",
       "Virtual private networking",
@@ -216,15 +216,15 @@ const questions = [
       "Firewall protection for networks"
     ],
     answer: 0,
-    explanations: {
-      0: "Correct. Amazon Route 53 is AWS’s scalable DNS web service and domain registration service, used to route end-users to endpoints etc.",
-      1: "Incorrect. Virtual private networking is handled by AWS VPN / Direct Connect, not Route 53.",
-      2: "Incorrect. Automatic scaling of EC2 instances is handled by Auto Scaling, not Route 53.",
-      3: "Incorrect. Firewall protection is handled by services like AWS WAF, Network Firewall, security groups—not specifically Route 53."
+    explain: "Route 53 is AWS’s scalable DNS and domain registration service. It routes end users to applications.",
+    why_others_are_not_correct: {
+      1: "VPN and private connectivity use services like Site-to-Site VPN or Direct Connect, not Route 53.",
+      2: "Auto Scaling handles scaling, not Route 53.",
+      3: "Network firewalls are handled by things like security groups, NACLs, Network Firewall, WAF — not Route 53."
     }
   },
   {
-    q: "15. Which AWS service can automatically adjust compute capacity to maintain steady, predictable performance?",
+    q: "Which AWS service can automatically adjust compute capacity to maintain steady, predictable performance?",
     choices: [
       "Amazon CloudWatch",
       "AWS Auto Scaling",
@@ -232,15 +232,15 @@ const questions = [
       "AWS Backup"
     ],
     answer: 1,
-    explanations: {
-      0: "Incorrect. Amazon CloudWatch monitors resources, collects metrics and alarms, but does not itself adjust compute capacity automatically.",
-      1: "Correct. AWS Auto Scaling monitors your application demand and automatically adds or removes compute resources (EC2 instances, containers, etc.) to maintain steady performance and cost-efficiency.",
-      2: "Incorrect. Amazon Inspector assesses security vulnerabilities, not compute capacity scaling.",
-      3: "Incorrect. AWS Backup is a centralized backup service, not about automatically adjusting compute capacity."
+    explain: "AWS Auto Scaling monitors demand and adds or removes capacity (like EC2 instances) to keep performance steady and avoid overpaying.",
+    why_others_are_not_correct: {
+      0: "CloudWatch monitors and alarms, but doesn’t itself scale capacity.",
+      2: "Inspector scans for security issues, not performance scaling.",
+      3: "AWS Backup centralizes backup/restore, not scaling."
     }
   },
   {
-    q: "16. What is the primary purpose of Amazon VPC (Virtual Private Cloud)?",
+    q: "What is the primary purpose of Amazon VPC (Virtual Private Cloud)?",
     choices: [
       "Providing cloud-based storage for files",
       "Launching virtual servers in an isolated network environment",
@@ -248,15 +248,15 @@ const questions = [
       "Automating server patching"
     ],
     answer: 1,
-    explanations: {
-      0: "Incorrect. Cloud-based storage for files is a function of services like Amazon S3, EFS, etc., not the primary purpose of a VPC.",
-      1: "Correct. Amazon VPC enables you to launch AWS resources (such as EC2 instances) into a virtual network that you've defined — a logically isolated section of the AWS Cloud.  [oai_citation:0‡AWS Documentation](https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html?utm_source=chatgpt.com)",
-      2: "Incorrect. Monitoring AWS resources is done by services like Amazon CloudWatch, not by VPC itself.",
-      3: "Incorrect. Automating server patching is a feature of e.g., AWS Systems Manager Patch Manager, not the VPC networking service."
+    explain: "A VPC lets you define your own logically isolated section of the AWS Cloud, with control over IP ranges, subnets, routing, and security.",
+    why_others_are_not_correct: {
+      0: "Object/file storage is S3/EFS/etc., not VPC.",
+      2: "Monitoring is CloudWatch’s job, not VPC’s.",
+      3: "Automated patching is part of Systems Manager, not what defines a VPC."
     }
   },
   {
-    q: "17. Which AWS service provides detailed monitoring and observability for applications and resources?",
+    q: "Which AWS service provides detailed monitoring and observability for applications and resources?",
     choices: [
       "Amazon CloudWatch",
       "AWS Trusted Advisor",
@@ -264,15 +264,15 @@ const questions = [
       "AWS Organizations"
     ],
     answer: 0,
-    explanations: {
-      0: "Correct. Amazon CloudWatch collects metrics, logs, and events to help you monitor resource utilization and application performance.",
-      1: "Incorrect. AWS Trusted Advisor offers best-practice recommendations on cost, security, performance, fault tolerance, but is not primarily a metrics/observability tool.",
-      2: "Incorrect. AWS Config is used to track resource configuration changes over time for compliance, not primarily detailed observability of app metrics.",
-      3: "Incorrect. AWS Organizations is for multi-account management and consolidated billing/policies, not monitoring or observability."
+    explain: "Amazon CloudWatch collects metrics, logs, and events so you can see performance and set alarms.",
+    why_others_are_not_correct: {
+      1: "Trusted Advisor gives best-practice recommendations, not live telemetry dashboards.",
+      2: "Config tracks configuration and compliance, not runtime performance metrics.",
+      3: "Organizations manages multiple AWS accounts and billing, not observability."
     }
   },
   {
-    q: "18. What is the main benefit of AWS Regions and Availability Zones architecture?",
+    q: "What is the main benefit of AWS Regions and Availability Zones architecture?",
     choices: [
       "Higher operational costs",
       "Improved availability and fault tolerance",
@@ -280,15 +280,15 @@ const questions = [
       "Automatic encryption"
     ],
     answer: 1,
-    explanations: {
-      0: "Incorrect. The purpose of multiple Regions/AZs is not to increase costs; in fact, better architecture can reduce risk and outage cost.",
-      1: "Correct. Having multiple Availability Zones (and optionally Regions) allows you to design for failure (if one AZ/region fails, others take over) which enhances availability and fault tolerance.",
-      2: "Incorrect. While pricing may differ by region, the architecture’s key benefit is availability/fault tolerance — not simpler pricing.",
-      3: "Incorrect. Encryption (at rest/in transit) is a security feature, but the multi-AZ/region design is primarily about resilience, not automatic encryption."
+    explain: "By spreading workloads across multiple AZs (and even Regions), you can survive failures and keep services available.",
+    why_others_are_not_correct: {
+      0: "The goal is resilience, not cost inflation.",
+      2: "Pricing may differ by Region, but pricing simplicity is not the architectural benefit.",
+      3: "Encryption is a separate security feature, not the core point of multi-AZ design."
     }
   },
   {
-    q: "19. Which service helps you identify under-utilized or unused AWS resources to reduce costs?",
+    q: "Which service helps you identify under-utilized or unused AWS resources to reduce costs?",
     choices: [
       "AWS Cost Explorer",
       "AWS CloudFormation",
@@ -296,31 +296,31 @@ const questions = [
       "Amazon EC2"
     ],
     answer: 0,
-    explanations: {
-      0: "Correct. AWS Cost Explorer helps you visualize your AWS spending and find cost optimization opportunities, such as idle resources or unused capacity.",
-      1: "Incorrect. AWS CloudFormation is infrastructure as code for provisioning resources, not specifically focused on cost-identification of unused resources.",
-      2: "Incorrect. AWS Auto Scaling adjusts capacity based on demand — it helps with costs in some sense but isn’t a tool whose main purpose is identifying under-utilized resources.",
-      3: "Incorrect. Amazon EC2 is a compute instance service, not a cost-analysis tool."
+    explain: "AWS Cost Explorer helps visualize spend and spot idle or underused resources so you can optimize cost.",
+    why_others_are_not_correct: {
+      1: "CloudFormation is infrastructure as code, not a cost analysis tool.",
+      2: "Auto Scaling changes capacity based on load, but doesn’t report historical waste.",
+      3: "EC2 is compute itself, not a cost optimization dashboard."
     }
   },
   {
-    q: "20. What does AWS Trusted Advisor provide?",
+    q: "What does AWS Trusted Advisor provide?",
     choices: [
-      "A tool that gives real-time guidance to optimize AWS resources for cost, security, and performance",
+      "Real-time guidance to optimize AWS resources for cost, security, and performance",
       "A service that creates EC2 instances automatically",
       "A monitoring dashboard for EC2 health",
       "A firewall for your VPC"
     ],
     answer: 0,
-    explanations: {
-      0: "Correct. AWS Trusted Advisor inspects your AWS environment and provides recommendations (cost, security, performance, fault tolerance) to help you optimize your setup.",
-      1: "Incorrect. It does not “create EC2 instances automatically”; it analyzes your environment.",
-      2: "Incorrect. While Trusted Advisor may flag issues, it is not a dedicated real-time dashboard tool for EC2 health—that is more like CloudWatch.",
-      3: "Incorrect. It is not a firewall; VPC security groups/NACLs/WAF handle firewalling."
+    explain: "Trusted Advisor analyzes your environment and gives recommendations on cost savings, security hardening, performance, and fault tolerance.",
+    why_others_are_not_correct: {
+      1: "It doesn't just spin up EC2 automatically.",
+      2: "It’s not just an EC2 health dashboard — that’s more CloudWatch.",
+      3: "Firewalling is handled by things like security groups, NACLs, WAF, etc., not Trusted Advisor."
     }
   },
   {
-    q: "21. Which AWS service helps you manage multiple AWS accounts centrally?",
+    q: "Which AWS service helps you manage multiple AWS accounts centrally?",
     choices: [
       "AWS CloudTrail",
       "AWS Organizations",
@@ -328,15 +328,15 @@ const questions = [
       "AWS IAM"
     ],
     answer: 1,
-    explanations: {
-      0: "Incorrect. AWS CloudTrail records API calls across your account for auditing, but does not manage multiple accounts centrally.",
-      1: "Correct. AWS Organizations enables you to manage multiple AWS accounts, apply service control policies, and consolidate billing across them.",
-      2: "Incorrect. AWS Control Tower helps set up a governed landing zone and is built on Organizations; the core multi-account management service is Organizations.",
-      3: "Incorrect. AWS IAM deals with identity/access within an account (or cross-account roles), not multi-account billing/policy management."
+    explain: "AWS Organizations lets you group accounts, apply policies, and consolidate billing across them.",
+    why_others_are_not_correct: {
+      0: "CloudTrail records API calls for auditing, not multi-account governance.",
+      2: "Control Tower builds on Organizations to set up a governed landing zone, but Organizations is the core multi-account management service.",
+      3: "IAM handles identity and permissions within or across accounts, but not consolidated billing or org-wide policy at the account level."
     }
   },
   {
-    q: "22. Which AWS service provides infrastructure as code (IaC) capabilities?",
+    q: "Which AWS service provides infrastructure as code (IaC) capabilities?",
     choices: [
       "AWS CloudFormation",
       "AWS CloudTrail",
@@ -344,15 +344,15 @@ const questions = [
       "AWS CodeCommit"
     ],
     answer: 0,
-    explanations: {
-      0: "Correct. AWS CloudFormation allows you to define and provision AWS infrastructure using templates — making it an IaC tool.",
-      1: "Incorrect. AWS CloudTrail is for logging API calls and auditing, not provisioning resources.",
-      2: "Incorrect. AWS Cloud9 is a cloud-based IDE, not an IaC service.",
-      3: "Incorrect. AWS CodeCommit is a source control repository for code, not specifically infrastructure provisioning."
+    explain: "CloudFormation lets you define your infrastructure in templates and deploy it consistently and repeatedly.",
+    why_others_are_not_correct: {
+      1: "CloudTrail is for auditing API calls.",
+      2: "Cloud9 is a cloud IDE.",
+      3: "CodeCommit is source control, not IaC."
     }
   },
   {
-    q: "23. Which AWS service can be used to create isolated environments for running containers?",
+    q: "Which AWS service can be used to create isolated environments for running containers?",
     choices: [
       "Amazon ECS",
       "AWS Lambda",
@@ -360,15 +360,15 @@ const questions = [
       "Amazon Lightsail"
     ],
     answer: 0,
-    explanations: {
-      0: "Correct. Amazon Elastic Container Service (ECS) is a fully managed container orchestration service for running Docker containers in isolated environments.",
-      1: "Incorrect. AWS Lambda runs functions (serverless) and is not primarily used for long-running container environments.",
-      2: "Incorrect. AWS Batch is for batch computing jobs, not general container orchestration environmentizing multiple containerized services.",
-      3: "Incorrect. Amazon Lightsail is simplified VPS/containers but not the primary AWS managed container service for isolated container orchestration."
+    explain: "Amazon ECS is AWS’s managed container orchestration service for running Docker containers in controlled, isolated environments.",
+    why_others_are_not_correct: {
+      1: "Lambda runs short-lived functions, not long-running containerized services (unless using container images just as a packaging format).",
+      2: "AWS Batch is focused on batch jobs, not general-purpose container orchestration for microservices.",
+      3: "Lightsail is for simple VPS-style stacks, not full container orchestration at scale."
     }
   },
   {
-    q: "24. Which AWS service provides fully managed NoSQL databases?",
+    q: "Which AWS service provides fully managed NoSQL databases?",
     choices: [
       "Amazon RDS",
       "Amazon DynamoDB",
@@ -376,15 +376,15 @@ const questions = [
       "Amazon Redshift"
     ],
     answer: 1,
-    explanations: {
-      0: "Incorrect. Amazon RDS is for relational databases (SQL), not NoSQL.",
-      1: "Correct. Amazon DynamoDB is a fully managed NoSQL key-value and document database with single-digit millisecond latency.",
-      2: "Incorrect. Amazon Aurora is a high-performance relational database compatible with MySQL/PostgreSQL, not NoSQL.",
-      3: "Incorrect. Amazon Redshift is a data warehouse service for analytics, not a NoSQL database."
+    explain: "Amazon DynamoDB is a fully managed NoSQL key-value and document database designed for high performance at scale.",
+    why_others_are_not_correct: {
+      0: "RDS is for relational (SQL) databases.",
+      2: "Aurora is a high-performance relational engine compatible with MySQL/PostgreSQL, not NoSQL.",
+      3: "Redshift is a data warehouse for analytics, not a NoSQL store."
     }
   },
   {
-    q: "25. What AWS service provides a simple interface for object lifecycle management, versioning, and replication?",
+    q: "What AWS service provides a simple interface for object lifecycle management, versioning, and replication?",
     choices: [
       "Amazon EBS",
       "Amazon S3",
@@ -392,15 +392,15 @@ const questions = [
       "Amazon FSx"
     ],
     answer: 1,
-    explanations: {
-      0: "Incorrect. Amazon EBS is a block-storage service, not optimized for object lifecycle/versioning/replication policies.",
-      1: "Correct. Amazon S3 offers object storage with lifecycle policies, versioning, cross-region replication and multiple storage classes for cost optimisation.",
-      2: "Incorrect. AWS Storage Gateway bridges on-premises storage with AWS — not the native object lifecycle management service in AWS.",
-      3: "Incorrect. Amazon FSx is managed file storage (Windows, Lustre etc.), not the object storage service with lifecycle/versioning you find with S3."
+    explain: "Amazon S3 supports versioning, lifecycle rules, and cross-region replication — it’s built for object storage management at scale.",
+    why_others_are_not_correct: {
+      0: "EBS is block storage for EC2 instances and doesn’t natively manage object lifecycle/versioning policies.",
+      2: "Storage Gateway connects on-prem storage to AWS but isn’t the native object lifecycle engine.",
+      3: "FSx is a managed file system offering (e.g. Windows FS, Lustre), not S3-style object storage."
     }
   },
   {
-    q: "26. What is Amazon EC2 primarily used for?",
+    q: "What is Amazon EC2 primarily used for?",
     choices: [
       "Running virtual servers in the cloud",
       "Hosting databases only",
@@ -408,15 +408,15 @@ const questions = [
       "Serving as a CDN"
     ],
     answer: 0,
-    explanations: {
-      0: "Correct. Amazon Elastic Compute Cloud (EC2) lets you launch and manage virtual server instances in the cloud — the basic compute building block.",
-      1: "Incorrect. While you can host databases on EC2, it is not limited to that and is broadly for general virtual servers.",
-      2: "Incorrect. Monitoring traffic flow is more like VPC Flow Logs, CloudWatch or traffic analytics services, not the main use of EC2.",
-      3: "Incorrect. Serving as a CDN is the role of Amazon CloudFront, not EC2."
+    explain: "Amazon EC2 is AWS’s core compute service for launching and managing virtual server instances.",
+    why_others_are_not_correct: {
+      1: "You can host databases on EC2, but EC2 is general-purpose compute — not just databases.",
+      2: "Traffic flow monitoring is more of a networking/logging/CloudWatch use case.",
+      3: "A CDN is CloudFront’s role, not EC2’s."
     }
   },
   {
-    q: "27. What is the main advantage of Amazon RDS over self-managed databases on EC2?",
+    q: "What is the main advantage of Amazon RDS over self-managed databases on EC2?",
     choices: [
       "Manual patching and backup control",
       "Fully managed automation of database administration tasks",
@@ -424,15 +424,15 @@ const questions = [
       "No high availability options"
     ],
     answer: 1,
-    explanations: {
-      0: "Incorrect. Manual patching/backups is what you do if you manage databases yourself on EC2 — RDS reduces that burden.",
-      1: "Correct. With Amazon RDS you get managed tasks such as backups, patching, monitoring, replication, freeing you from low-level DB administration.",
-      2: "Incorrect. RDS actually makes scaling easier (via instance classes, Multi-AZ, read replicas), not harder.",
-      3: "Incorrect. RDS supports high availability (e.g., Multi-AZ deployments) and thus is not lacking HA options."
+    explain: "RDS automates undifferentiated tasks like backups, patching, monitoring, replication, and scaling so you don’t have to be a full-time DBA.",
+    why_others_are_not_correct: {
+      0: "Manual patch/backup is exactly what RDS tries to remove from your workload.",
+      2: "Scaling is typically easier with RDS (instance class changes, read replicas, Multi-AZ).",
+      3: "RDS offers high availability (for example Multi-AZ), so saying it has no HA is incorrect."
     }
   },
   {
-    q: "28. Which AWS service helps you view and audit API activity across your AWS account?",
+    q: "Which AWS service helps you view and audit API activity across your AWS account?",
     choices: [
       "AWS Config",
       "AWS CloudTrail",
@@ -440,15 +440,15 @@ const questions = [
       "AWS GuardDuty"
     ],
     answer: 1,
-    explanations: {
-      0: "Incorrect. AWS Config tracks configuration changes of resources and compliance, not necessarily all API activity.",
-      1: "Correct. AWS CloudTrail records all API calls and console actions in your AWS account for auditing and governance.",
-      2: "Incorrect. AWS CloudFormation is infrastructure provisioning via templates, not activity/audit logging.",
-      3: "Incorrect. AWS GuardDuty is threat detection service — it analyzes data for suspicious behavior, but the audit log of API calls is CloudTrail."
+    explain: "AWS CloudTrail records API calls and console activity in your account for governance, compliance, and auditing.",
+    why_others_are_not_correct: {
+      0: "AWS Config tracks configuration state/history, not every API call.",
+      2: "CloudFormation provisions infrastructure from templates, not audit activity.",
+      3: "GuardDuty analyzes data sources for threats, but CloudTrail is the actual API activity log."
     }
   },
   {
-    q: "29. Which service allows you to automatically deploy and manage applications in multiple environments such as dev, test, and production?",
+    q: "Which service allows you to automatically deploy and manage applications in multiple environments such as dev, test, and production?",
     choices: [
       "AWS Elastic Beanstalk",
       "AWS CodePipeline",
@@ -456,15 +456,15 @@ const questions = [
       "Amazon ECS"
     ],
     answer: 0,
-    explanations: {
-      0: "Correct. AWS Elastic Beanstalk allows you to deploy applications and handles provisioning, load balancing, scaling, monitoring, allowing you to manage dev/test/prod environments more easily.",
-      1: "Incorrect. AWS CodePipeline is a continuous delivery service for building release pipelines, not the full environment provisioning/management tool like Beanstalk.",
-      2: "Incorrect. AWS Cloud9 is a cloud-based IDE for development, not a deployment/manage-app-environment service.",
-      3: "Incorrect. Amazon ECS is container orchestration; while you can manage apps across environments, the question is about automatically deploying/managing application environments — Elastic Beanstalk is the better match."
+    explain: "Elastic Beanstalk deploys your app and handles load balancing, scaling, health monitoring, and environment setup for you across stages like dev/test/prod.",
+    why_others_are_not_correct: {
+      1: "CodePipeline automates delivery pipelines, but it’s not the full app environment provisioning/management layer.",
+      2: "Cloud9 is a browser-based IDE, not a deployment/orchestration service.",
+      3: "ECS runs containers, but Beanstalk is the 'push code, get environment' service called out here."
     }
   },
   {
-    q: "30. What AWS service can automatically distribute incoming application traffic across multiple targets to improve performance?",
+    q: "What AWS service can automatically distribute incoming application traffic across multiple targets to improve performance?",
     choices: [
       "Amazon Route 53",
       "Elastic Load Balancing (ELB)",
@@ -472,15 +472,15 @@ const questions = [
       "AWS CloudFront"
     ],
     answer: 1,
-    explanations: {
-      0: "Incorrect. Amazon Route 53 is DNS and global traffic routing, not specifically application-level load balancing across targets in an availability zone/region.",
-      1: "Correct. Elastic Load Balancing automatically distributes incoming application traffic across multiple targets (such as EC2 instances, containers) to improve availability and performance.",
-      2: "Incorrect. AWS Transit Gateway connects multiple VPCs and on-prem networks, not directly about distributing application traffic to improve performance.",
-      3: "Incorrect. AWS CloudFront is a CDN that caches content at edge locations; while it improves performance for content delivery, it is not the service whose primary purpose is distributing application traffic across multiple targets in your backend."
+    explain: "Elastic Load Balancing sends traffic to multiple targets (EC2 instances, containers, etc.) to increase availability and performance.",
+    why_others_are_not_correct: {
+      0: "Route 53 is DNS/routing at the domain level, not live load balancing across instances in your app tier.",
+      2: "Transit Gateway connects VPCs and networks, not balances app traffic.",
+      3: "CloudFront caches content at edge locations (CDN). It's not the per-target load balancer for your backend."
     }
   },
   {
-    q: "31. Which AWS service helps detect security threats using machine learning to continuously monitor network activity and account behavior?",
+    q: "Which AWS service helps detect security threats using machine learning to continuously monitor network activity and account behavior?",
     choices: [
       "AWS Shield",
       "AWS GuardDuty",
@@ -488,15 +488,15 @@ const questions = [
       "AWS Security Hub"
     ],
     answer: 1,
-    explanations: {
-      0: "Incorrect. AWS Shield is about DDoS protection at network/application layers, not primarily ML-based monitoring of account behavior.",
-      1: "Correct. AWS GuardDuty uses machine learning, threat intelligence, and continuous monitoring of data sources (e.g., VPC flow logs, DNS logs, CloudTrail events) to detect suspicious behavior.  [oai_citation:0‡AWS Documentation](https://docs.aws.amazon.com/guardduty/latest/ug/what-is-guardduty.html?utm_source=chatgpt.com)",
-      2: "Incorrect. AWS WAF is a web application firewall and deals with blocking/filtering HTTP(S) requests, not broad account-behavior monitoring.",
-      3: "Incorrect. AWS Security Hub aggregates findings from multiple security services, but is not itself the core threat-detection ML service."
+    explain: "Amazon GuardDuty uses machine learning and threat intel to detect suspicious activity in things like VPC flow logs, DNS logs, and CloudTrail events.",
+    why_others_are_not_correct: {
+      0: "AWS Shield is focused on DDoS protection, not broad behavioral threat detection.",
+      2: "AWS WAF filters/block HTTP(S) requests based on rules, not ML-driven account behavior analytics.",
+      3: "AWS Security Hub aggregates findings; it’s more of a centralized dashboard than the engine doing raw anomaly detection."
     }
   },
   {
-    q: "32. What is the main purpose of AWS Identity and Access Management (IAM)?",
+    q: "What is the main purpose of AWS Identity and Access Management (IAM)?",
     choices: [
       "To encrypt objects in Amazon S3",
       "To control access to AWS resources securely",
@@ -504,15 +504,15 @@ const questions = [
       "To distribute traffic across Regions"
     ],
     answer: 1,
-    explanations: {
-      0: "Incorrect. Encryption of S3 objects is handled by S3/KMS/CloudHSM, not IAM.",
-      1: "Correct. IAM enables you to create users, groups, roles and assign permissions to determine who can access which AWS resources under what conditions.",
-      2: "Incorrect. Monitoring CPU usage is done via CloudWatch, not IAM.",
-      3: "Incorrect. Distributing traffic across Regions is a networking/traffic-routing concept (Route 53, Global Accelerator), not IAM’s job."
+    explain: "IAM lets you define who (user, role, service) can access what resources, and under what conditions.",
+    why_others_are_not_correct: {
+      0: "S3 encryption is handled by S3/KMS/etc., not IAM alone.",
+      2: "CPU monitoring is a CloudWatch job.",
+      3: "Traffic distribution across Regions is a networking/routing function, not IAM."
     }
   },
   {
-    q: "33. Which service provides managed data warehousing for large-scale analytics?",
+    q: "Which service provides managed data warehousing for large-scale analytics?",
     choices: [
       "Amazon Redshift",
       "Amazon Aurora",
@@ -520,15 +520,15 @@ const questions = [
       "Amazon DynamoDB"
     ],
     answer: 0,
-    explanations: {
-      0: "Correct. Amazon Redshift is AWS’s fully managed data warehouse service designed for analytic queries across large datasets.",
-      1: "Incorrect. Amazon Aurora is a relational database engine (OLTP) compatible with MySQL/PostgreSQL, not primarily a data warehouse.",
-      2: "Incorrect. Amazon RDS is managed relational database service, designed for transactional workloads, not large-scale warehousing.",
-      3: "Incorrect. Amazon DynamoDB is a fully managed NoSQL database, not a columnar data warehouse."
+    explain: "Amazon Redshift is a fully managed data warehouse for analytics across huge datasets.",
+    why_others_are_not_correct: {
+      1: "Aurora is an OLTP-style relational database, not a data warehouse.",
+      2: "RDS is general managed relational DB service, not specialized columnar analytics.",
+      3: "DynamoDB is NoSQL key-value/document, not an analytics warehouse."
     }
   },
   {
-    q: "34. What AWS service provides an online management console for creating and managing AWS resources?",
+    q: "What AWS service provides an online management console for creating and managing AWS resources?",
     choices: [
       "AWS Management Console",
       "AWS CLI",
@@ -536,15 +536,15 @@ const questions = [
       "AWS CloudShell"
     ],
     answer: 0,
-    explanations: {
-      0: "Correct. The AWS Management Console is the web-based GUI that lets you visually browse, configure, and manage AWS resources.",
-      1: "Incorrect. AWS CLI is the command-line interface, not the browser GUI.",
-      2: "Incorrect. AWS SDKs are programming language libraries for interacting with AWS APIs from code.",
-      3: "Incorrect. AWS CloudShell is a browser-based shell environment, but the broader console is the GUI for managing resources."
+    explain: "The AWS Management Console is the browser-based GUI for viewing and configuring services.",
+    why_others_are_not_correct: {
+      1: "The CLI is command-line access, not a point-and-click web console.",
+      2: "SDKs are language libraries for programmatic access, not a console.",
+      3: "CloudShell is a browser shell environment, but the full graphical dashboard is the Console."
     }
   },
   {
-    q: "35. Which AWS service allows you to archive infrequently accessed data at the lowest cost?",
+    q: "Which AWS service allows you to archive infrequently accessed data at the lowest cost?",
     choices: [
       "Amazon S3 Glacier",
       "Amazon EFS",
@@ -552,15 +552,15 @@ const questions = [
       "Amazon RDS"
     ],
     answer: 0,
-    explanations: {
-      0: "Correct. Amazon S3 Glacier (and Glacier Deep Archive) is designed for long-term archival of data at very low cost.",
-      1: "Incorrect. Amazon EFS is a managed file system for frequent/shared access, not optimized for low-cost archival.",
-      2: "Incorrect. Amazon FSx is managed file storage (Windows, Lustre etc.), not primarily archival object storage.",
-      3: "Incorrect. Amazon RDS is a managed relational database service — not archival storage."
+    explain: "Amazon S3 Glacier (and Glacier Deep Archive) is designed for long-term, low-cost archival storage.",
+    why_others_are_not_correct: {
+      1: "EFS is for frequently accessed shared files, not cold archive.",
+      2: "FSx is managed file systems (like Windows/Lustre), not cold archival object storage.",
+      3: "RDS is a relational database service, not archival storage."
     }
   },
   {
-    q: "36. What feature of Amazon S3 helps ensure durability of stored data?",
+    q: "What feature of Amazon S3 helps ensure durability of stored data?",
     choices: [
       "Multi-AZ replication and data redundancy",
       "Single-instance storage per object",
@@ -568,15 +568,15 @@ const questions = [
       "Limited availability zones"
     ],
     answer: 0,
-    explanations: {
-      0: "Correct. Amazon S3 stores data redundantly across multiple devices and facilities (often multiple Availability Zones) to achieve extremely high durability (e.g., 11-9s).",
-      1: "Incorrect. Single-instance storage would be fragile and against S3’s architecture.",
-      2: "Incorrect. While users can do snapshots, S3’s durability comes built-in, not by relying solely on manual snapshots.",
-      3: "Incorrect. Limited AZs would reduce durability; S3 uses multiple zones/locations to increase durability."
+    explain: "S3 redundantly stores objects across multiple devices and facilities (often across Availability Zones) to achieve extremely high durability.",
+    why_others_are_not_correct: {
+      1: "If each object lived on a single device, durability would be terrible. S3 intentionally avoids that.",
+      2: "You don’t rely solely on manual snapshots for durability — redundancy is built in.",
+      3: "Limiting to one AZ would hurt durability. S3’s durability comes from spreading data out."
     }
   },
   {
-    q: "37. Which AWS tool provides a visual way to estimate monthly AWS costs based on your architecture?",
+    q: "Which AWS tool provides a visual way to estimate monthly AWS costs based on your architecture?",
     choices: [
       "AWS Pricing Calculator",
       "AWS Budgets",
@@ -584,15 +584,15 @@ const questions = [
       "AWS Cost Explorer"
     ],
     answer: 0,
-    explanations: {
-      0: "Correct. The AWS Pricing Calculator lets you model architecture and estimate costs ahead of deployment based on usage scenarios.",
-      1: "Incorrect. AWS Budgets lets you set cost/usage thresholds and alerts, but isn’t primarily a modelling estimate tool.",
-      2: "Incorrect. AWS Trusted Advisor gives recommendations to optimise cost/performance/security, not primarily cost-estimating tool.",
-      3: "Incorrect. AWS Cost Explorer shows historical cost/usage and visualization, but not upfront architectural cost estimation."
+    explain: "The AWS Pricing Calculator lets you model an architecture and forecast expected monthly costs before you deploy.",
+    why_others_are_not_correct: {
+      1: "AWS Budgets is for setting spend thresholds/alerts once you’re running, not upfront estimation.",
+      2: "Trusted Advisor gives best-practice recommendations, not interactive cost modeling.",
+      3: "Cost Explorer analyzes historical spend trends, not hypothetical future builds."
     }
   },
   {
-    q: "38. What does the AWS Free Tier allow new users to do?",
+    q: "What does the AWS Free Tier allow new users to do?",
     choices: [
       "Run AWS services for unlimited time for free",
       "Experiment with AWS services within specific limits for free",
@@ -600,15 +600,15 @@ const questions = [
       "Receive one-on-one AWS consulting sessions"
     ],
     answer: 1,
-    explanations: {
-      0: "Incorrect. Free Tier is not unlimited free usage forever — it has time/usage caps.",
-      1: "Correct. The AWS Free Tier allows new users to experiment with many AWS services within usage limits (and often for 12 months) at no charge.",
-      2: "Incorrect. Premium support (Developer/Business/Enterprise) is paid, not included for free in Free Tier.",
-      3: "Incorrect. One-on-one consulting is not part of Free Tier offering."
+    explain: "The Free Tier lets you try certain services at no cost, within usage limits (often for 12 months for new accounts).",
+    why_others_are_not_correct: {
+      0: "It’s not unlimited or forever. There are limits.",
+      2: "Premium (Developer/Business/Enterprise) support is paid.",
+      3: "Free Tier does not include personal consulting sessions."
     }
   },
   {
-    q: "39. Which AWS service enables you to use pre-configured templates to deploy popular software stacks such as WordPress or LAMP?",
+    q: "Which AWS service enables you to use pre-configured templates to deploy popular software stacks such as WordPress or LAMP?",
     choices: [
       "Amazon Lightsail",
       "AWS CodeDeploy",
@@ -616,15 +616,15 @@ const questions = [
       "AWS CloudFormation"
     ],
     answer: 0,
-    explanations: {
-      0: "Correct. Amazon Lightsail offers simplified virtual private servers and blueprints (pre-configured stacks like WordPress, LAMP) for quick launch.",
-      1: "Incorrect. AWS CodeDeploy is a deployment automation service, not the one-click stack template environment.",
-      2: "Incorrect. Elastic Beanstalk manages applications (web apps) and underlying infrastructure, but the “pre-configured stack blueprint for quick launch” context fits Lightsail better.",
-      3: "Incorrect. AWS CloudFormation is infrastructure-as-code, defining resources via templates — not the simplified stack/blueprint user experience for apps like WordPress."
+    explain: "Amazon Lightsail gives you simple VPS-style instances with blueprints for common stacks like WordPress, LAMP, etc.",
+    why_others_are_not_correct: {
+      1: "CodeDeploy automates code deployment, but it’s not a one-click WordPress/LAMP launcher.",
+      2: "Elastic Beanstalk manages web app environments, but Lightsail is the one specifically marketed for quick preset app stacks.",
+      3: "CloudFormation is IaC templates (infrastructure definition), not the simplified app blueprint experience aimed at small deployments."
     }
   },
   {
-    q: "40. Which AWS service provides centralized security and compliance visibility across multiple AWS accounts?",
+    q: "Which AWS service provides centralized security and compliance visibility across multiple AWS accounts?",
     choices: [
       "AWS Shield",
       "AWS Security Hub",
@@ -632,15 +632,15 @@ const questions = [
       "AWS Config"
     ],
     answer: 1,
-    explanations: {
-      0: "Incorrect. AWS Shield is DDoS protection, not a centralized security/compliance dashboard.",
-      1: "Correct. AWS Security Hub aggregates findings from multiple AWS services and accounts, providing a centralized dashboard for security/compliance posture.",
-      2: "Incorrect. AWS WAF is a web application firewall, not a multi-account compliance visibility tool.",
-      3: "Incorrect. AWS Config tracks resource configuration changes for compliance, but Security Hub is the central aggregated view."
+    explain: "AWS Security Hub aggregates security findings and compliance status from multiple services and accounts into one dashboard.",
+    why_others_are_not_correct: {
+      0: "AWS Shield protects against DDoS; it’s not a compliance dashboard.",
+      2: "AWS WAF is a web application firewall, not a multi-account security posture view.",
+      3: "AWS Config tracks configuration state and compliance per resource, but Security Hub is the central roll-up for org-wide visibility."
     }
   },
   {
-    q: "41. Which AWS service can help you protect web applications from common exploits such as SQL injection and cross-site scripting?",
+    q: "Which AWS service can help you protect web applications from common exploits such as SQL injection and cross-site scripting?",
     choices: [
       "AWS Shield",
       "AWS WAF (Web Application Firewall)",
@@ -648,15 +648,15 @@ const questions = [
       "Amazon GuardDuty"
     ],
     answer: 1,
-    explanations: {
-      0: "Incorrect. AWS Shield deals with DDoS attacks and network-layer protection, not specifically web-app exploit rules.",
-      1: "Correct. AWS WAF is a web application firewall that allows you to define rules to block or allow web requests based on patterns (IP, geo, SQLi/XSS, URIs).",
-      2: "Incorrect. AWS Config monitors configuration changes of resources, not filtering HTTP(S) traffic for exploits.",
-      3: "Incorrect. Amazon GuardDuty monitors for suspicious behavior, but it doesn’t directly enforce request-level web app exploit block rules the way WAF does."
+    explain: "AWS WAF lets you define rules to allow/block traffic based on patterns like SQL injection or XSS attempts.",
+    why_others_are_not_correct: {
+      0: "AWS Shield focuses on DDoS mitigation, not filtering web app request payloads.",
+      2: "AWS Config is for configuration compliance, not HTTP request inspection.",
+      3: "GuardDuty detects suspicious behavior, but it doesn’t sit inline and block malicious requests at the HTTP layer."
     }
   },
   {
-    q: "42. Which AWS service provides DDoS protection at the network and application layers?",
+    q: "Which AWS service provides DDoS protection at the network and application layers?",
     choices: [
       "AWS Firewall Manager",
       "AWS Shield",
@@ -664,15 +664,15 @@ const questions = [
       "Amazon CloudFront"
     ],
     answer: 1,
-    explanations: {
-      0: "Incorrect. AWS Firewall Manager is a management tool for firewall/WAF policies across accounts, not the actual DDoS mitigation engine.",
-      1: "Correct. AWS Shield provides managed Distributed Denial-of-Service (DDoS) protection across network (layers 3/4) and application (layer 7) for AWS resources.  [oai_citation:1‡AWS Documentation](https://docs.aws.amazon.com/waf/latest/developerguide/ddos-overview.html?utm_source=chatgpt.com)",
-      2: "Incorrect. AWS WAF protects HTTP(S) at layer 7 (web application firewall) but is not a full DDoS mitigation service across all layers.",
-      3: "Incorrect. Amazon CloudFront is a CDN for content delivery, not specifically a dedicated DDoS protection service."
+    explain: "AWS Shield is the managed DDoS protection service that helps defend against large-scale network and application layer attacks.",
+    why_others_are_not_correct: {
+      0: "Firewall Manager centralizes policy management for services like WAF and Shield, but it’s not itself the DDoS protection engine.",
+      2: "AWS WAF filters HTTP(S) requests for app-layer exploits but is not full DDoS mitigation across layers.",
+      3: "CloudFront is a CDN. While it can help absorb traffic, its primary purpose is content delivery, not being your DDoS service."
     }
   },
   {
-    q: "43. What does AWS CloudTrail primarily record?",
+    q: "What does AWS CloudTrail primarily record?",
     choices: [
       "Resource utilization metrics",
       "All API calls and user activity across your AWS account",
@@ -680,31 +680,31 @@ const questions = [
       "S3 storage metrics only"
     ],
     answer: 1,
-    explanations: {
-      0: "Incorrect. Resource utilization metrics (CPU, memory, network) are monitored in CloudWatch, not CloudTrail.",
-      1: "Correct. AWS CloudTrail logs and records API calls and console user activity across your AWS account for auditing and compliance.",
-      2: "Incorrect. It doesn’t focus only on EC2 errors; its scope is all API activity.",
-      3: "Incorrect. It isn’t limited to S3 storage metrics — it covers all AWS API calls."
+    explain: "CloudTrail logs API activity (who did what, from where, and when) across your AWS environment for auditing and compliance.",
+    why_others_are_not_correct: {
+      0: "Resource utilization metrics are handled by CloudWatch.",
+      2: "CloudTrail isn’t just about EC2 errors; it covers API calls across services.",
+      3: "It’s not limited to S3 metrics — it spans the whole account’s API activity."
     }
   },
   {
-    q: "44. Which AWS service provides a unified dashboard for monitoring key operational metrics and setting alarms?",
+    q: "Which AWS service provides a unified dashboard for monitoring key operational metrics and setting alarms?",
     choices: [
       "Amazon CloudWatch",
       "AWS Config",
-      "AWS Inspector",
+      "Amazon Inspector",
       "AWS Trusted Advisor"
     ],
     answer: 0,
-    explanations: {
-      0: "Correct. Amazon CloudWatch collects metrics, logs, and events from AWS resources and lets you create dashboards and alarms to monitor them.",
-      1: "Incorrect. AWS Config tracks configuration changes and compliance, not primarily operational metric dashboards.",
-      2: "Incorrect. AWS Inspector checks for security vulnerabilities in EC2/container images, not metric dashboards.",
-      3: "Incorrect. AWS Trusted Advisor gives best-practice recommendations, not live metric dashboards."
+    explain: "CloudWatch collects metrics and logs from AWS services and lets you build dashboards and alarms to watch health and performance.",
+    why_others_are_not_correct: {
+      1: "Config tracks configuration and compliance drift, not runtime health dashboards.",
+      2: "Inspector scans for vulnerabilities and security findings, not general performance metrics.",
+      3: "Trusted Advisor gives optimization recommendations, not live metric dashboards/alarms."
     }
   },
   {
-    q: "45. Which AWS service helps automate security assessments to improve compliance of applications?",
+    q: "Which AWS service helps automate security assessments to improve compliance of applications?",
     choices: [
       "Amazon Inspector",
       "AWS Config",
@@ -712,15 +712,15 @@ const questions = [
       "AWS Artifact"
     ],
     answer: 0,
-    explanations: {
-      0: "Correct. Amazon Inspector runs automated security assessments on EC2 instances and container images and reports findings that help improve application security/compliance.",
-      1: "Incorrect. AWS Config tracks and records resource configuration changes and evaluates compliance rules, but the 'automated security assessment of applications' fits Inspector better.",
-      2: "Incorrect. AWS Shield is DDoS protection, not an assessment tool.",
-      3: "Incorrect. AWS Artifact provides on-demand access to AWS compliance reports (e.g., ISO 27001, SOC 2), not the assessment automation itself."
+    explain: "Amazon Inspector runs automated security assessments on EC2 instances and container images and reports findings to help you fix issues.",
+    why_others_are_not_correct: {
+      1: "Config tracks resource configuration and compliance rules but is not the automated vuln scanner.",
+      2: "Shield is DDoS protection, not app security assessment.",
+      3: "Artifact is where you download AWS compliance reports and agreements, not where you scan your workloads."
     }
   },
   {
-    q: "46. Which AWS service gives on-demand access to compliance reports and agreements such as ISO 27001 or SOC 2?",
+    q: "Which AWS service gives on-demand access to compliance reports and agreements such as ISO 27001 or SOC 2?",
     choices: [
       "AWS Artifact",
       "AWS Config",
@@ -728,15 +728,15 @@ const questions = [
       "AWS Security Hub"
     ],
     answer: 0,
-    explanations: {
-      0: "Correct. AWS Artifact is the self-service portal where you can download AWS compliance reports (like SOC 1/2/3, ISO 27001) and review/accept AWS’s agreements.  [oai_citation:0‡AWS Documentation](https://docs.aws.amazon.com/artifact/latest/ug/what-is-aws-artifact.html?utm_source=chatgpt.com)",
-      1: "Incorrect. AWS Config tracks and audits configuration changes of AWS resources, but it’s not primarily for downloading compliance reports or agreements.",
-      2: "Incorrect. AWS Audit Manager helps you automate evidence collection and audit workflows, but the question asks specifically about access to AWS’s compliance reports and agreements.",
-      3: "Incorrect. AWS Security Hub aggregates security finding and compliance posture across accounts, not the central repository of compliance reports from AWS."
+    explain: "AWS Artifact is the self-service portal to download AWS compliance reports (SOC, ISO, etc.) and review certain agreements.",
+    why_others_are_not_correct: {
+      1: "Config audits configuration changes for compliance, but it’s not where you pull SOC/ISO reports.",
+      2: "Audit Manager helps automate evidence collection for audits; it’s not the report download portal.",
+      3: "Security Hub centralizes security findings, not formal compliance documents from AWS."
     }
   },
   {
-    q: "47. Which AWS service automatically inventories and tracks configuration changes to AWS resources?",
+    q: "Which AWS service automatically inventories and tracks configuration changes to AWS resources?",
     choices: [
       "AWS CloudTrail",
       "AWS Config",
@@ -744,15 +744,15 @@ const questions = [
       "AWS Organizations"
     ],
     answer: 1,
-    explanations: {
-      0: "Incorrect. AWS CloudTrail logs all API calls and user activity, but it does not itself continuously track full configuration state changes in the same way.",
-      1: "Correct. AWS Config enables you to record, audit and evaluate the configurations of AWS resources over time — giving you historical data and change tracking.  [oai_citation:1‡AWS Documentation](https://docs.aws.amazon.com/whitepapers/latest/aws-overview/security-services.html?utm_source=chatgpt.com)",
-      2: "Incorrect. AWS Systems Manager is for operations management (patching, run commands) across EC2/instances, not primarily for configuration-change inventory.",
-      3: "Incorrect. AWS Organizations is for multi-account governance and billing consolidation, not per-resource configuration tracking."
+    explain: "AWS Config records and evaluates configurations of AWS resources over time so you can see what changed and when.",
+    why_others_are_not_correct: {
+      0: "CloudTrail logs API calls, but doesn’t continuously evaluate resource configuration state against rules.",
+      2: "Systems Manager is about operational control/patching/automation on instances, not config timeline tracking.",
+      3: "Organizations is multi-account governance/billing, not per-resource config tracking."
     }
   },
   {
-    q: "48. Which service provides a central place to view AWS account spending, forecasts, and set cost thresholds?",
+    q: "Which service provides a central place to view AWS account spending, forecasts, and set cost thresholds?",
     choices: [
       "AWS Billing Dashboard",
       "AWS Cost Explorer",
@@ -760,15 +760,15 @@ const questions = [
       "AWS Pricing Calculator"
     ],
     answer: 2,
-    explanations: {
-      0: "Incorrect. The AWS Billing Dashboard shows you bills and charges but does not provide advanced forecasting or threshold alerts in the way described.",
-      1: "Incorrect. AWS Cost Explorer is focused on analyzing past cost/usage patterns and trends, rather than setting cost thresholds and alerts.",
-      2: "Correct. AWS Budgets allows you to establish cost/usage budgets, set alerts when you approach or exceed budgets, and helps with forecasting.  [oai_citation:2‡AWS Documentation](https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-create.html?utm_source=chatgpt.com)",
-      3: "Incorrect. The AWS Pricing Calculator is for estimating future costs before deployment, not monitoring actual spending thresholds."
+    explain: "AWS Budgets lets you define cost and usage budgets, get alerts when you approach/exceed them, and view forecasted spend.",
+    why_others_are_not_correct: {
+      0: "The Billing Dashboard shows charges, but doesn’t give full alerting/threshold control.",
+      1: "Cost Explorer analyzes past spend trends, not alert thresholds.",
+      3: "The Pricing Calculator estimates future cost before deployment, not monitors active spend."
     }
   },
   {
-    q: "49. Which AWS support plan provides a Technical Account Manager (TAM) and access to 24/7 concierge support?",
+    q: "Which AWS support plan provides a Technical Account Manager (TAM) and access to 24/7 concierge support?",
     choices: [
       "Basic",
       "Developer",
@@ -776,15 +776,15 @@ const questions = [
       "Enterprise"
     ],
     answer: 3,
-    explanations: {
-      0: "Incorrect. The Basic support plan includes account-/billing-only support and does *not* include a TAM or advanced technical concierge.",
-      1: "Incorrect. The Developer support plan offers business-hours tech support but not the extensive features (like TAM) associated with higher tiers.",
-      2: "Incorrect. The Business support plan provides 24/7 tech support, but the dedicated Technical Account Manager (TAM) is reserved for the highest tier.",
-      3: "Correct. The Enterprise support plan includes a dedicated TAM, 24/7 concierge access, and proactive guidance for complex/mission-critical environments."
+    explain: "The Enterprise support plan includes a dedicated Technical Account Manager, concierge-level assistance, and 24/7 support for mission-critical workloads.",
+    why_others_are_not_correct: {
+      0: "Basic only covers account/billing support and community forums, no TAM.",
+      1: "Developer offers guidance but no TAM and not full concierge-level SLA.",
+      2: "Business offers 24/7 access to engineers, but a dedicated TAM is an Enterprise feature."
     }
   },
   {
-    q: "50. Which AWS service provides a simple and quick way to deploy static websites such as portfolios or documentation?",
+    q: "Which AWS service provides a simple and quick way to deploy static websites such as portfolios or documentation?",
     choices: [
       "Amazon S3 Static Website Hosting",
       "AWS Elastic Beanstalk",
@@ -792,12 +792,11 @@ const questions = [
       "Amazon ECS"
     ],
     answer: 0,
-    explanations: {
-      0: "Correct. Amazon S3 (when used in Static Website Hosting mode) is a very low-cost and simple way to host static websites (HTML/JS/CSS) without needing compute servers.",
-      1: "Incorrect. AWS Elastic Beanstalk is for deploying web applications that require runtime environments, not just hosting static files.",
-      2: "Incorrect. Amazon Lightsail offers simplified virtual servers or containers and pre-configured stacks, but using S3 static hosting is even simpler for pure static sites.",
-      3: "Incorrect. Amazon ECS is a container orchestration service and overkill for static site hosting."
+    explain: "Amazon S3 static website hosting lets you serve HTML/CSS/JS directly from S3 with almost no infrastructure to manage.",
+    why_others_are_not_correct: {
+      1: "Elastic Beanstalk is geared toward web apps that run code/compute, not plain static files.",
+      2: "Lightsail can host sites, but S3 static hosting is the simplest/cheapest path for pure static content.",
+      3: "ECS is container orchestration — way more complex than needed for a static site."
     }
   }
 ];
-
