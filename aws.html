@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Quiz</title>
+  <link rel="stylesheet" href="quiz.css"/>
+</head>
+<body>
+
+  <div class="quiz-card">
+    <div id="quizContainer">
+      <div class="question" id="qText"></div>
+      <div class="choices" id="qChoices"></div>
+      <div class="explanation" id="qExplain"></div>
+    </div>
+
+    <div class="controls">
+      <button id="prevBtn">Previous</button>
+      <button id="nextBtn">Next</button>
+    </div>
+  </div>
+
+  <script src="questions.js"></script>
+  <script>
+    let idx = 0;
+    const answers = [];
+
+    const qText    = document.getElementById('qText');
+    const qChoices = document.getElementById('qChoices');
+    const qExplain = document.getElementById('qExplain');
+    const prevBtn  = document.getElementById('prevBtn');
+    const nextBtn  = document.getElementById('nextBtn');
+
+    function showQuestion() {
+      const q = questions[idx];
+      answers[idx] = answers[idx] || null;     // preserve answer or null
+      qText.textContent = q.q;
+      qChoices.innerHTML  = '';
+      qExplain.textContent = '';
+      qExplain.className = 'explanation';
+
+      q.choices.forEach((choice, i) => {
+        const label = document.createElement('label');
+        const input = document.createElement('input');
+        input.type = 'radio';
+        input.name = 'ans';
+        input.value = i;
+        input.checked = (answers[idx] === i);
+        input.disabled = (answers[idx] !== null);
+
+        input.addEventListener('change', () => {
+          answers[idx] = i;
+          showExplanation();
+        });
+
+        label.appendChild(input);
+        label.appendChild(document.createTextNode(choice));
+        qChoices.appendChild(label);
+      });
+
+      prevBtn.disabled = (idx === 0);
+      nextBtn.disabled = (idx === questions.length - 1);
+    }
+
+    function showExplanation() {
+      const q    = questions[idx];
+      const ans  = answers[idx];
+      if (ans === null) return;
+      if (ans === q.answer) {
+        qExplain.textContent = 'Correct. ' + q.explain;
+        qExplain.classList.add('correct');
+      } else {
+        qExplain.textContent = 'NOPE!!! ' + q.explain;
+        qExplain.classList.add('wrong');
+      }
+    }
+
+    prevBtn.addEventListener('click', () => {
+      if (idx > 0) {
+        idx--; showQuestion();
+      }
+    });
+
+    nextBtn.addEventListener('click', () => {
+      if (idx < questions.length - 1) {
+        idx++; showQuestion();
+      }
+    });
+
+    showQuestion();
+  </script>
+
+</body>
+</html>
+
