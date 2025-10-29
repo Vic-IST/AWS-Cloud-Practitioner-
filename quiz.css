@@ -64,9 +64,7 @@ body {
 }
 
 .choices label {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+  display: block;
   margin: 6px auto;
   cursor: pointer;
   text-align: left;
@@ -79,14 +77,18 @@ body {
   transition: border-color 0.2s ease, background-color 0.2s ease, transform 0.2s ease;
 }
 
-.choices label:hover {
+.choices label:hover,
+.choices label:focus {
   border-color: rgba(242, 179, 48, 0.6);
   background-color: rgba(16, 46, 110, 0.65);
   transform: translateY(-2px);
+  outline: none;
 }
 
-.choices input[type="radio"]{
-  margin-right: 8px;
+.choices label.selected {
+  background-color: rgba(242, 179, 48, 0.25);
+  border-color: rgba(242, 179, 48, 0.75);
+  transform: translateY(-1px);
 }
 
 .controls {
@@ -116,6 +118,9 @@ body {
   font-size: 1.1rem;
   padding-bottom: 12px;
   border-bottom: 2px solid rgba(242, 179, 48, 0.35);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .explanation {
@@ -123,6 +128,18 @@ body {
   font-style: italic;
 }
 
+.question-number {
+  font-size: 1.35rem;
+  color: inherit;
+  letter-spacing: 0.5px;
+  padding-bottom: 6px;
+  border-bottom: 2px solid rgba(242, 179, 48, 0.35);
+}
+
+.question-text {
+  font-size: 1.15rem;
+  line-height: 1.5;
+}
 .explanation.correct {
   color: #2ecc71;
 }
